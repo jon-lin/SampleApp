@@ -1,10 +1,12 @@
-var path = require("path");
+const path = require("path")
+const HtmlWebpackPlugin = require('html-webpack-plugin')
+const webpack = require('webpack')
 
 module.exports = {
   entry: [
     'eventsource-polyfill', // Necessary for hot reloading with IE
     'webpack-hot-middleware/client',
-    path.join(process.cwd(), 'app/app.js'), // Start with js/app.js
+    path.join(process.cwd(), 'lib/index.js'),
   ],
   output: Object.assign({
     path: path.resolve(process.cwd(), 'public'),
