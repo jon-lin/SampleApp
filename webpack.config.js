@@ -22,10 +22,10 @@ module.exports = {
   mode: 'development',
   module: {
     rules: [
-      // {
-      //   test: /\.css$/,
-      //   use: 'css-loader'
-      // },
+      {
+        test: /\.css$/,
+        use: [{ loader: 'style-loader'}, { loader: 'css-loader' }]
+      },
       {
         test: /\.js$/,
         // use: 'babel-loader',
@@ -33,13 +33,13 @@ module.exports = {
         options: {
           plugins: ['react-hot-loader/babel']
         }
+      },
+      {
+        test: /\.(eot|svg|ttf|woff|woff2|txt)$/,
+        loader: 'file-loader'
       }
     ],
     // loaders: [{
-    //   test: /\.js$/, // Transform all .js files required somewhere with Babel
-    //   loader: 'babel',
-    //   exclude: /node_modules/
-    // }, {
     //   test: /\.css$/,
     //   exclude: /node_modules/,
     //   loader: 'style-loader!css-loader'
@@ -135,12 +135,12 @@ module.exports = {
     //     }
     //   }
     // }),
-    new webpack.DefinePlugin({
-      'process.env': {
-        NODE_ENV: JSON.stringify(process.env.NODE_ENV),
-        FONT_KEY: JSON.stringify(process.env.FONT_KEY),
-      }
-    }),
+    // new webpack.DefinePlugin({ // makes global variables
+    //   'process.env': {
+    //     NODE_ENV: JSON.stringify(process.env.NODE_ENV),
+    //     FONT_KEY: JSON.stringify(process.env.FONT_KEY),
+    //   }
+    // }),
   ],
   resolve: {
     // modules: ['app', 'node_modules'],
