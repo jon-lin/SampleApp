@@ -28,7 +28,11 @@ module.exports = {
       // },
       {
         test: /\.js$/,
-        use: 'babel-loader'
+        // use: 'babel-loader',
+        loader: 'babel-loader',
+        options: {
+          plugins: ['react-hot-loader/babel']
+        }
       }
     ],
     // loaders: [{
@@ -87,56 +91,56 @@ module.exports = {
       // put the script tag into the html file instead of inserting
       template: 'asdf.html',
     }),
-  //   // Always expose NODE_ENV to webpack, in order to use `process.env.NODE_ENV`
-  //   // inside your code for any environment checks; UglifyJS will automatically
-  //   // drop any unreachable code.
-  //   new webpack.LoaderOptionsPlugin({
-  //     minimize: true,
-  //     debug: false,
-  //     options: {
-  //       babel: {
-  //         babelrc: false,
-  //         cacheDirectory: '/tmp/',
-  //         "presets": [
-  //           "react",
-  //           ["latest", { "modules": false }],
-  //           "stage-0",
-  //         ],
-  //         env: {
-  //           development: {
-  //             "plugins": [
-  //               ["react-transform", {
-  //                 "transforms": [{
-  //                   "transform": "react-transform-hmr",
-  //                   "imports": ["react"],
-  //                   "locals": ["module"]
-  //                 }, {
-  //                     "transform": "react-transform-catch-errors",
-  //                     "imports": ["react", "redbox-react"]
-  //                   }]
-  //               }],
-  //               "transform-runtime",
-  //               "add-module-exports",
-  //               "transform-class-properties"
-  //             ]
-  //           },
-  //           production: {
-  //             "plugins": [
-  //               "transform-runtime",
-  //               "add-module-exports",
-  //               "transform-class-properties"
-  //             ]
-  //           }
-  //         }
-  //       }
-  //     }
-  //   }),
-  //   new webpack.DefinePlugin({
-  //     'process.env': {
-  //       NODE_ENV: JSON.stringify(process.env.NODE_ENV),
-  //       FONT_KEY: JSON.stringify(process.env.FONT_KEY)
-  //     },
-  //   }),
+    // // Always expose NODE_ENV to webpack, in order to use `process.env.NODE_ENV`
+    // // inside your code for any environment checks; UglifyJS will automatically
+    // // drop any unreachable code.
+    // new webpack.LoaderOptionsPlugin({
+    //   minimize: true,
+    //   debug: false,
+    //   options: {
+    //     babel: {
+    //       babelrc: false,
+    //       cacheDirectory: '/tmp/',
+    //       "presets": [
+    //         "react",
+    //         ["latest", { "modules": false }],
+    //         "stage-0",
+    //       ],
+    //       env: {
+    //         development: {
+    //           "plugins": [
+    //             ["react-transform", {
+    //               "transforms": [{
+    //                 "transform": "react-transform-hmr",
+    //                 "imports": ["react"],
+    //                 "locals": ["module"]
+    //               }, {
+    //                   "transform": "react-transform-catch-errors",
+    //                   "imports": ["react", "redbox-react"]
+    //                 }]
+    //             }],
+    //             "transform-runtime",
+    //             "add-module-exports",
+    //             "transform-class-properties"
+    //           ]
+    //         },
+    //         production: {
+    //           "plugins": [
+    //             "transform-runtime",
+    //             "add-module-exports",
+    //             "transform-class-properties"
+    //           ]
+    //         }
+    //       }
+    //     }
+    //   }
+    // }),
+    new webpack.DefinePlugin({
+      'process.env': {
+        NODE_ENV: JSON.stringify(process.env.NODE_ENV),
+        FONT_KEY: JSON.stringify(process.env.FONT_KEY),
+      }
+    }),
   ],
   resolve: {
     // modules: ['app', 'node_modules'],
