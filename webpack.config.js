@@ -3,22 +3,22 @@ const HtmlWebpackPlugin = require('html-webpack-plugin')
 const webpack = require('webpack')
 
 module.exports = {
-  entry: path.join(process.cwd(), 'lib/app.js'),
-  // [
-  //   'eventsource-polyfill', // Necessary for hot reloading with IE
-  //   'webpack-hot-middleware/client',
-  //   path.join(process.cwd(), 'lib/index.js'),
-  // ],
+  entry: // path.join(process.cwd(), 'lib/app.js'),
+  [
+    // 'eventsource-polyfill', // Necessary for hot reloading with IE
+    'webpack-hot-middleware/client',
+    path.join(process.cwd(), 'lib/app.js'),
+  ],
   output: {
     path: path.resolve(process.cwd(), 'lib'),
     // publicPath: '/',
     filename: 'bundle.js',
     // chunkFilename: 'bundle.chunk.js',
   },
-  devServer: {
-    contentBase: 'lib',
-    hot: true
-  },
+  // devServer: {
+  //   contentBase: 'lib',
+  //   hot: true
+  // },
   mode: 'development',
   module: {
     rules: [
@@ -29,9 +29,9 @@ module.exports = {
       {
         test: /\.js$/,
         loader: 'babel-loader',
-        options: {
-          plugins: ['react-hot-loader/babel']
-        }
+        // options: {
+        //   plugins: ['react-hot-loader/babel']
+        // }
       },
       // {
       //   test: /\.(eot|svg|ttf|woff|woff2|txt)$/,
@@ -61,7 +61,7 @@ module.exports = {
 
       // use template to refer to index.html file and get rid .ejs extension
       // put the script tag into the html file instead of inserting
-      template: 'asdf.html',
+      template: './asdf.html',
     }),
     // // Always expose NODE_ENV to webpack, in order to use `process.env.NODE_ENV`
     // // inside your code for any environment checks; UglifyJS will automatically
@@ -127,5 +127,5 @@ module.exports = {
   },
   devtool: '#eval-source-map',
   target: 'web', // Make web variables accessible to webpack, e.g. window
-  stats: 'verbose'
+  // stats: 'verbose'
 }
